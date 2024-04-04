@@ -24,7 +24,7 @@ public class User {
 
     @Column(name = "balance")
     @NonNull
-    private Double balance;
+    private Long balance;
 
     @OneToMany(mappedBy = "user")
     private List<Transaction> transactions;

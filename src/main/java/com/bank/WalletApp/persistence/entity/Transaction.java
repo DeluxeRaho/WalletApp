@@ -27,7 +27,7 @@ public class Transaction {
 
     @NonNull
     @Column(name = "Amount")
-    private Double amount;
+    private Long amount;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
