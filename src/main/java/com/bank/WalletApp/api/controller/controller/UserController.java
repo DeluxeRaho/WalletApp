@@ -24,8 +24,4 @@ public class UserController {
         UserRequestDto userRequestDto = userService.getUserById(id);
         return ResponseEntity.ok(userRequestDto);
     }
-
-    @PostMapping("/addUser")
-    public User addUser(@RequestBody String name,
-                        RequestBody Long balance)
 }
