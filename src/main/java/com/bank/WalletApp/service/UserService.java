@@ -25,4 +25,8 @@ public class UserService {
                 .balance(user.get().getBalance())
                 .build();
     }
+
+    public User saveUser(User user){
+        return userRepository.save(user);
+    }
 }
