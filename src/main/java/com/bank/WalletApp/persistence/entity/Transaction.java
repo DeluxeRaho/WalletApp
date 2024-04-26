@@ -1,39 +1,44 @@
 package com.bank.WalletApp.persistence.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Data
-@Table(name = "Transactions")
+@Table(name = "TRANSACTIONS")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Transaction {
+@Builder
+@Data
+@EntityListeners(AuditingEntityListener.class)
+public class Transaction{
 
     @Id
-    @Column(name = "Transaction ID")
     @GeneratedValue
+    @Column(name = "transactionId")
     private Long transactionId;
 
     @Enumerated
     @NonNull
-    @Column(name = "Transaction Type")
-    private TransactionType type;
+    @Column(name = "transactionType")
+    private TransactionType transactionType;
 
     @NonNull
-    @Column(name = "Amount")
+    @Column(name = "amount")
     private Long amount;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date date;
+    @CreatedDate
+    @Column(name = "createdAt", nullable = false, updatable = false)
+    private Date createdAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "User ID")
+    @JoinColumn(name = "userId", nullable = false)
     @NonNull
     private User user;
 }

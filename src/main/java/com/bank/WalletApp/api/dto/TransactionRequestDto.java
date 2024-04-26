@@ -1,19 +1,17 @@
-package com.bank.WalletApp.api.controller.dto;
+package com.bank.WalletApp.api.dto;
 
-import com.bank.WalletApp.persistence.entity.TransactionType;
-import com.bank.WalletApp.persistence.entity.User;
-import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NonNull;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Date;
 
-@Data
-@Builder
+@Getter
+@Setter
+@NoArgsConstructor
 public class TransactionRequestDto {
-    private TransactionType type;
+    
+    @Schema(description = "Amount of the transaction", example = "150.00", required = true)
     private Long amount;
-    private Date date;
-    private User user;
 }

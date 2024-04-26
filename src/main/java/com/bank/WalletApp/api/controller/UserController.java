@@ -1,10 +1,12 @@
-package com.bank.WalletApp.api.controller.controller;
+package com.bank.WalletApp.api.controller;
 
-import com.bank.WalletApp.api.controller.dto.UserRequestDto;
-import com.bank.WalletApp.persistence.entity.User;
+import com.bank.WalletApp.api.dto.UserRequestDto;
 import com.bank.WalletApp.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.models.annotations.OpenAPI30;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,9 +21,9 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<UserRequestDto> getUserById(@PathVariable Long id) {
-        UserRequestDto userRequestDto = userService.getUserById(id);
-        return ResponseEntity.ok(userRequestDto);
+    @Operation(summary = "Get the balance of a user by userId")
+    @GetMapping("/{userId}")
+    public ResponseEntity<UserRequestDto> getBalanceByUserId(@PathVariable Long userId) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.userService.getUserById(userId));
     }
 }
