@@ -2,7 +2,6 @@ package com.bank.WalletApp.persistence.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.boot.autoconfigure.web.WebProperties;
 
 import java.util.List;
 

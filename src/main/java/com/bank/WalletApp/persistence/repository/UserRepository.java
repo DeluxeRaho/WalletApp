@@ -11,10 +11,9 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-
     @Query(value = "select u.balance from User u where u.id = :userId")
     Optional<Long> getBalance(@Param("userId") Long userId);
-    
+
     @Query(value = "select u.name from User u where u.id = :userId")
     Optional<Long> getName(@Param("userId") Long userId);
 

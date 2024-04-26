@@ -10,7 +10,6 @@ import java.util.List;
 
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
-
     @Query(value = "select t from Transaction t where t.user.id = :userId")
     List<Transaction> getAllTransactionsByUserId(@Param("userId") Long userId);
 }
